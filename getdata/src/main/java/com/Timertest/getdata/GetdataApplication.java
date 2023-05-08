@@ -9,13 +9,14 @@ import org.springframework.stereotype.Component;
 @SpringBootApplication
 public class GetdataApplication {
 
-	public static void main(String[] args) throws Exception{
-
-		CamelContext context = new DefaultCamelContext();
-		context.addRoutes(new OpenAIPostsPuller());
-		context.start();
-		Thread.sleep(60000); // Keep the context running for 1 minute
-		context.stop();
+	public static void main(String[] args) throws Exception {
+		try {
+			CamelContext context = new DefaultCamelContext();
+			context.addRoutes(new OpenAIPostsPuller());
+			context.start();
+			Thread.sleep(60000); // Keep the context running for 1 minute
+			context.stop();
+		} catch (Exception e) {
+		}
 	}
-
 }
